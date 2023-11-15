@@ -17,9 +17,9 @@ declare global {
   }
 }
 
-const verifyToken = (token: string): AuthenticatedUser | null => {
+const verifyToken = (token: string): AuthenticatedUser |null => {
   try {
-    return jwt.verify(token, process.env.JWT_SECRET || '') as AuthenticatedUser;
+    return jwt.verify(token, process.env.secret_key || '') as AuthenticatedUser;
   } catch (error) {
     return null;
   }

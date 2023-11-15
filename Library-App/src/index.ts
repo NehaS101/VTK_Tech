@@ -8,9 +8,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(authenticate);
 app.use('/api',router);
 app.use('/api',userRouter);
+
+app.get('/',(req, res) => {
+res.send('wecome to library app');
+});
 
 app.listen(process.env.port,async()=>{
     console.log("server listening on port " + process.env.port);

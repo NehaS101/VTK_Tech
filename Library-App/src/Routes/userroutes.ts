@@ -41,7 +41,7 @@ userRouter.post('/register', async (req: Request, res: Response) => {
       }
   
       // Generate a JWT token for authentication
-      const token = jwt.sign({ id: user._id, role: user.roles }, process.env.JWT_SECRET || '', {
+      const token = jwt.sign({ id: user._id, role: user.roles }, process.env.secret_key || '', {
         expiresIn: '1d', // Token expires in 1 hour (adjust as needed)
       });
   

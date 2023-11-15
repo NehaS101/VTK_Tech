@@ -5,14 +5,21 @@ import Book from '../Model/bookmodel';
 const router = express.Router();
 
 router.post('/books',authenticate,async (req:Request, res:Response) => {
-    try {
-        const {title} = req.body;
-        const book = new Book({title});
-        await book.save();
-    } catch (error) {
-        console.log(error);
-        res.send('Error: ' + error);
+  const { user } = req;
+
+  try {
+    if (user.roles.includes('CREATOR')) {
+      const { title } = req.body;
+    const book = new Book({ title, createdBy: req.user.id });
+    await book.save();
+    res.status(201).json(book);
+    } else {
+      return res.status(403).send('You do not have the required role.');
     }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Internal Server Error');
+  }
 })
 
 router.get('/books',authenticate,async (req:Request, res:Response)=>{
