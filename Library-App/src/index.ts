@@ -1,12 +1,16 @@
 import connection from "./config";
 import express from "express";
 import dotenv from "dotenv";
-import router from "./Routes/route";
+import authenticate from "./Middleware/auth";
+import router from "./Routes/bookroute";
+import userRouter from "./Routes/userroutes";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(authenticate);
 app.use('/api',router);
+app.use('/api',userRouter);
 
 app.listen(process.env.port,async()=>{
     console.log("server listening on port " + process.env.port);
