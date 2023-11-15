@@ -37,5 +37,8 @@
     "@types/jsonwebtoken": "^9.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
