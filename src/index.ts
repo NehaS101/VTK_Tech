@@ -15,8 +15,8 @@ app.get('/',(req, res) => {
 res.send('wecome to library app');
 });
 
-app.listen(process.env.port,async()=>{
-    console.log("server listening on port " + process.env.port);
+app.listen(process.env.Port,async()=>{
+    console.log("server listening on port " + process.env.Port);
     try {
       await connection;
       console.log('connected to db')  
