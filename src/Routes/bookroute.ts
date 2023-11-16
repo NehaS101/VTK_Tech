@@ -57,7 +57,6 @@ router.get('/books', authenticate, async (req: Request, res: Response) => {
       return res.status(200).json(newBooks);
     }
 
-    // If no filtering is requested, return all books
     const books = await Book.find();
     res.status(200).json(books);
   } catch (error) {
