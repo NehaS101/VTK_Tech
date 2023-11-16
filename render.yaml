@@ -1,7 +1,0 @@
-services:
-  - name: Library-app
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    runtime: nodejs
-    env:
-      node: 16
